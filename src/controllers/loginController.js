@@ -49,7 +49,7 @@ const authorLogin = async (req, res) => {
         return res.status(200).send({ status: true, token: token })
     }
     catch (err) {
-        res.status(500).send({ error: err.message })
+        res.status(500).send({ status: false, error: err.message })
     }
 }
 
