@@ -107,7 +107,7 @@ const updateBlog = async (req, res) => {
 
         //----------------------------------------updating blog--------------------------------------
         const updatedBlog = await blogModel.findByIdAndUpdate({ _id: blogId }, { $addToSet: { tags, subcategory }, $set: { title, body, publishedAt: Date.now(), isPublished: isPublished } }, { new: true });
-
+        
         return res.status(200).send({ status: true, msg: updatedBlog });
     }
     catch (err) {
