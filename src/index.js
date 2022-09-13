@@ -8,7 +8,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-mongoose.connect(process.env.MONGODB_LINK, {
+mongoose.connect(process.env.DB, {
     useNewUrlParser: true
 })
     .then(() => console.log("MongoDb is connected"))
