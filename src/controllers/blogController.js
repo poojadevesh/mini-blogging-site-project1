@@ -29,13 +29,13 @@ const createBlog = async (req, res) => {
 
         //-------------------data present or not in the body---------------------
         if (!title)
-            return res.status(400).send({ msg: 'Please fill title' })
+            return res.status(400).send({ status: false, msg: 'Please fill title' })
 
         if (!body)
-            return res.status(400).send({ msg: 'Please fill body' })
+            return res.status(400).send({ status: false, msg: 'Please fill body' })
 
         if (!authorId)
-            return res.status(400).send({ msg: 'Please fill authorId' })
+            return res.status(400).send({ status: false, msg: 'Please fill authorId' })
 
         // --------------------- title, body, authorId validations--------------------
         if (!validator.isValidText(title))
@@ -73,7 +73,7 @@ const getBlog = async (req, res) => {
         return res.status(200).send({ status: true, data: blog });
 
     } catch (err) {
-        res.status(500).send({ error: err.message });
+        res.status(500).send({ status: false, error: err.message });
     }
 };
 
@@ -111,7 +111,7 @@ const updateBlog = async (req, res) => {
         return res.status(200).send({ status: true, msg: updatedBlog });
     }
     catch (err) {
-        res.status(500).send({ error: err.message })
+        res.status(500).send({ status: false, error: err.message })
     }
 }
 
@@ -132,7 +132,7 @@ const deleteBlog = async (req, res) => {
         return res.status(200).send({ status: true, data: updatedBlog })
     }
     catch (err) {
-        res.status(500).send({ error: err.message })
+        res.status(500).send({ status: false, error: err.message })
     }
 }
 
@@ -151,7 +151,7 @@ const deletedByQuery = async (req, res) => {
             return res.status(400).send({ status: false, msg: "You can't put extra field" });
 
         //------------------------------finding blog by id through query-------------------------
-        const findBlog = await blogModel.find({{ authorId: decodedToken.authorId }, data] });
+        const findBlog = await blogModel.find({ $and: [{ authorId: decodedToken.authorId }, data] });
 
         if (findBlog.length == 0)
             return res.status(404).send({ status: false, msg: "blog not found" });
