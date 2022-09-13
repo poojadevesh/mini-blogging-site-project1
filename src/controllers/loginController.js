@@ -20,10 +20,10 @@ const authorLogin = async (req, res) => {
         
         //----------------email & password present or not in the body----------------
         if (!email)
-            return res.status(400).send({ msg: 'Please fill email' })
+            return res.status(400).send({ status: false, msg: 'Please fill email' })
         
         if (!password)
-            return res.status(400).send({ msg: 'Please fill password' })
+            return res.status(400).send({ status: false,  msg: 'Please fill password' })
         
          // --------------------- email, password validations------------------------
         if (!validator.isValidEmail(email))
