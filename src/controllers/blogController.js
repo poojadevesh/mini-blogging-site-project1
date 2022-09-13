@@ -151,7 +151,7 @@ const deletedByQuery = async (req, res) => {
             return res.status(400).send({ status: false, msg: "You can't put extra field" });
 
         //------------------------------finding blog by id through query-------------------------
-        const findBlog = await blogModel.find({ $and: [{ authorId: decodedToken.authorId }, data] });
+        const findBlog = await blogModel.find({{ authorId: decodedToken.authorId }, data] });
 
         if (findBlog.length == 0)
             return res.status(404).send({ status: false, msg: "blog not found" });
