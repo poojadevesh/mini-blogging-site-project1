@@ -19,19 +19,19 @@ const createAuthor = async (req, res) => {
 
         //----------------data present or not in the body-----------------
         if (!fname)
-            return res.status(400).send({ msg: 'Please fill fname' })
+            return res.status(400).send({ status: false, msg: 'Please fill fname' })
 
         if (!lname)
-            return res.status(400).send({ msg: 'Please fill lname' })
+            return res.status(400).send({ status: false, msg: 'Please fill lname' })
 
         if (!title)
-            return res.status(400).send({ msg: 'Please fill title' })
+            return res.status(400).send({ status: false, msg: 'Please fill title' })
 
         if (!email)
-            return res.status(400).send({ msg: 'Please fill email' })
+            return res.status(400).send({ status: false, msg: 'Please fill email' })
 
         if (!password)
-            return res.status(400).send({ msg: 'Please fill password' })
+            return res.status(400).send({ status: false, msg: 'Please fill password' })
 
         // ------------------------ data validations-----------------------------
         if (!validator.isValidName(fname))
