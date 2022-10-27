@@ -44,7 +44,7 @@ const authorLogin = async (req, res) => {
             return res.status(400).send({ status: false, message: "You Entered Wrong password" })
         
         //-------------------------------token generation-------------------------------
-        const token = jwt.sign({ authorId: existUser._id, group: "69" }, process.env.SECRET_KEY);
+        const token = jwt.sign({ authorId: existUser._id, group: "69" }, "SBPYADJS");
         res.setHeader("x-api-key", token)
         return res.status(200).send({ status: true, token: token })
     }

@@ -12,7 +12,7 @@ const authentication = async (req, res, next) => {
             return res.status(400).send({ status: false, msg: "Token must be present" });
         
         //---------------------token verification---------------------
-        const decodeToken = jwt.verify(token, process.env.SECRET_KEY);
+        const decodeToken = jwt.verify(token, "SBPYADJS");
 
         if (!decodeToken)
             return res.status(403).send({ status: false, msg: "Provide your own token" });

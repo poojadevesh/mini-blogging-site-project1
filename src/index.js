@@ -8,7 +8,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-mongoose.connect(process.env.DB, {
+mongoose.connect("mongodb+srv://riju:riju@cluster0.s4hmv.mongodb.net/mini-blogging-site", {
     useNewUrlParser: true
 })
     .then(() => console.log("MongoDb is connected"))
@@ -16,6 +16,7 @@ mongoose.connect(process.env.DB, {
 
 app.use('/', route);
 
-app.listen(process.env.PORT, () => {
-    console.log(`Express app running on port ${process.env.PORT}`)
-});
+app.listen(process.env.PORT || 3000,function(){
+    console.log('Connected to port: '+ (3000 || process.env.PORT));
+ })
+ 
