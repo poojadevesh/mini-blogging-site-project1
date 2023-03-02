@@ -38,7 +38,7 @@ const authorization = async (req, res, next) => {
         //----------------------token verification-----------------------
         const token = req.headers["x-api-key"];
 
-        const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
+        const decodedToken = jwt.verify(token, SBPYADJS);
         if (!decodedToken)
             return res.status(403).send({ status: false, msg: "Provide your own token" });
         
